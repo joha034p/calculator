@@ -32,14 +32,14 @@
       </ul>
       <p id="clear">clear results</p>
 
-      <input type="number" name="firstnumber" id="firstnumber" />
+      <input type="text" name="firstnumber" id="firstnumber" />
       <select name="operator" id="operator">
         <option value="add">+</option>
         <option value="sub">-</option>
         <option value="mul">*</option>
         <option value="div">/</option>
       </select>
-      <input type="number" name="secondnumber" id="secondnumber" />
+      <input type="text" name="secondnumber" id="secondnumber" />
       <button id="calculate">Calculate</button>
     </div>
 
@@ -51,7 +51,24 @@ document.querySelector("#calculate").addEventListener("mousedown", calculate);
 function calculate() {
   let firstValue = document.querySelector("#firstnumber").value;
   let secondValue = document.querySelector("#secondnumber").value;
-  console.log(parseFloat(firstValue) + parseFloat(secondValue));
+  let operator = document.querySelector("#operator").value;
+
+  if(operator === "add"){
+    console.log(parseFloat(firstValue) + parseFloat(secondValue));
+    // document.querySelector("#firstnumber").textContent = parseFloat(firstValue) + parseFloat(secondValue);
+  }
+  if(operator === "sub"){
+    console.log(parseFloat(firstValue) - parseFloat(secondValue));
+    // document.querySelector("#firstnumber").textContent = parseFloat(firstValue) - parseFloat(secondValue);
+  } 
+  if(operator === "mul"){
+    console.log(parseFloat(firstValue) * parseFloat(secondValue));
+    // document.querySelector("#firstnumber").textContent = parseFloat(firstValue) * parseFloat(secondValue);
+  } 
+  if(operator === "div"){
+    console.log(parseFloat(firstValue) / parseFloat(secondValue));
+    // document.querySelector("#firstnumber").textContent = parseFloat(firstValue) / parseFloat(secondValue);
+  }
 }
 
     </script>
