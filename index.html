@@ -45,31 +45,124 @@
 
 
     <script>
-"use strict";
-document.querySelector("#calculate").addEventListener("mousedown", calculate);
+// "use strict";
+// document.querySelector("#calculate").addEventListener("mousedown", calculate);
 
-function calculate() {
-  let firstValue = document.querySelector("#firstnumber").value;
-  let secondValue = document.querySelector("#secondnumber").value;
-  let operator = document.querySelector("#operator").value;
+// function calculate() {
+//   let firstValue = document.querySelector("#firstnumber").value;
+//   let secondValue = document.querySelector("#secondnumber").value;
+//   let operator = document.querySelector("#operator").value;
 
-  if(operator === "add"){
-    console.log(parseFloat(firstValue) + parseFloat(secondValue));
-    document.querySelector("#results").textContent = parseFloat(firstValue) + parseFloat(secondValue);
-  }
-  if(operator === "sub"){
-    console.log(parseFloat(firstValue) - parseFloat(secondValue));
-    document.querySelector("#results").textContent = parseFloat(firstValue) - parseFloat(secondValue);
-  } 
-  if(operator === "mul"){
-    console.log(parseFloat(firstValue) * parseFloat(secondValue));
-    document.querySelector("#results").textContent = parseFloat(firstValue) * parseFloat(secondValue);
-  } 
-  if(operator === "div"){
-    console.log(parseFloat(firstValue) / parseFloat(secondValue));
-    document.querySelector("#results").textContent = parseFloat(firstValue) / parseFloat(secondValue);
-  }
+//   if(operator === "add"){
+//     console.log(parseFloat(firstValue) + parseFloat(secondValue));
+//     document.querySelector("#results").textContent = parseFloat(firstValue) + parseFloat(secondValue);
+//   }
+//   if(operator === "sub"){
+//     console.log(parseFloat(firstValue) - parseFloat(secondValue));
+//     document.querySelector("#results").textContent = parseFloat(firstValue) - parseFloat(secondValue);
+//   } 
+//   if(operator === "mul"){
+//     console.log(parseFloat(firstValue) * parseFloat(secondValue));
+//     document.querySelector("#results").textContent = parseFloat(firstValue) * parseFloat(secondValue);
+//   } 
+//   if(operator === "div"){
+//     console.log(parseFloat(firstValue) / parseFloat(secondValue));
+//     document.querySelector("#results").textContent = parseFloat(firstValue) / parseFloat(secondValue);
+//   }
+// }
+
+
+
+let first_input;
+let second_input;
+let calculation; 
+let rounding;
+
+document.querySelector("#firstnumber").addEventListener("input", firstNumber);
+
+function firstNumber(){
+    first_input = parseInt(this.value);
+    console.log("first input = " + first_input);
 }
+
+document.querySelector("#secondnumber").addEventListener("input", secondNumber);
+
+function secondNumber(){   
+    second_input =  parseInt(this.value); 
+    console.log("second input = " + second_input);
+}
+
+document.querySelector("#calculate").addEventListener("click", calculateNumbers);
+
+function calculateNumbers(){
+
+   let operator = document.querySelector("#operator").value
+   console.log(operator);
+
+   if(operator === "add"){  
+    calculation = first_input + second_input;
+    console.log("sum = " + calculation);
+   }
+
+   if(operator === "sub"){  
+    calculation = first_input - second_input;
+    console.log("substration = " + calculation);
+   }
+
+   if(operator === "mul"){  
+    calculation = first_input * second_input;
+    console.log("multiplikation = " + calculation);
+   }
+   if(operator === "div"){  
+    calculation = first_input / second_input;
+    console.log("division = " + calculation);
+   }
+
+   
+
+   showCalc();
+}
+
+//check for rounding 
+document.querySelector("#doround").addEventListener("change", checkRounding);
+
+function checkRounding() {
+    
+    if (this.checked) {
+      console.log("rounding is on");
+      rounding = "roundingOn";
+    } else {
+      console.log("rounding is off");
+      rounding = "roundingOff";
+    }
+  };
+
+function showCalc(){
+    console.log("showing calculation");
+
+    if (rounding === "roundingOn"){
+    let roundingValue = document.querySelector("#decimals").value;
+    calculation = calculation.toFixed(roundingValue);
+    console.log("rounding with " + roundingValue + " decimals");
+    } 
+    if (rounding === "roundingOff"){
+        console.log("rounding is off");
+    }
+    let list = document.querySelector("ul");
+    calculation = document.createTextNode(calculation);
+    list.appendChild(calculation);
+    let br = document.createElement("br");
+    list.appendChild(br);
+    list.scrollTop = list.scrollHeight;
+}
+
+document.querySelector("#clear").addEventListener("click", clearOutput);
+function clearOutput(){
+console.log("clear output fields");
+document.querySelector("#results").textContent = "";
+}
+
+
 
     </script>
   </body>
