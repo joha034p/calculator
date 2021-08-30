@@ -55,19 +55,19 @@ function calculate() {
 
   if(operator === "add"){
     console.log(parseFloat(firstValue) + parseFloat(secondValue));
-    // document.querySelector("#firstnumber").textContent = parseFloat(firstValue) + parseFloat(secondValue);
+    document.querySelector("#results").textContent = parseFloat(firstValue) + parseFloat(secondValue);
   }
   if(operator === "sub"){
     console.log(parseFloat(firstValue) - parseFloat(secondValue));
-    // document.querySelector("#firstnumber").textContent = parseFloat(firstValue) - parseFloat(secondValue);
+    document.querySelector("#results").textContent = parseFloat(firstValue) - parseFloat(secondValue);
   } 
   if(operator === "mul"){
     console.log(parseFloat(firstValue) * parseFloat(secondValue));
-    // document.querySelector("#firstnumber").textContent = parseFloat(firstValue) * parseFloat(secondValue);
+    document.querySelector("#results").textContent = parseFloat(firstValue) * parseFloat(secondValue);
   } 
   if(operator === "div"){
     console.log(parseFloat(firstValue) / parseFloat(secondValue));
-    // document.querySelector("#firstnumber").textContent = parseFloat(firstValue) / parseFloat(secondValue);
+    document.querySelector("#results").textContent = parseFloat(firstValue) / parseFloat(secondValue);
   }
 }
 
